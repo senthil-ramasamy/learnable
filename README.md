@@ -39,6 +39,16 @@ update users set role = 'admin'/'instructor' where email='<needed>';
 
 this will change the permissions
 
+#to do
+
+certification 
+
+discussion platform embed
+
+blog extra
+
+//update the list if u find anything
+
 # base adapted from
 
 https://github.com/alpha-tango/OutTeach
