@@ -1,13 +1,8 @@
 == README
 
-# OUTTEACH
+# Learnable shit
 
 ### About the App
-
-OUTTEACH is an open courseware app that allows users to create courses and share their knowledge. Users can...
-* create a course and add assignments or multiple-choice quizzes to it
-* embed videos, pictures, markdown or 'tip boxes' in their courses
-* work through another user's courses and take quizzes
 
 Built in Rails/PostGreSQL.
 
@@ -17,18 +12,22 @@ Built in Rails/PostGreSQL.
 * set up the database: `rake db:setup`
 * you're all set!
 
-### Testing
 
-This app uses Rspec/Capybara for its test environment.
+### For setting up admin or instructor !
 
-[![Coverage Status](https://img.shields.io/coveralls/alpha-tango/OutTeach.svg)](https://coveralls.io/r/alpha-tango/OutTeach?branch=master)
+admins and isntructors can only add the courses !
 
-[![Test Status](https://travis-ci.org/alpha-tango/OutTeach.svg?branch=master)](https://travis-ci.org/alpha-tango/OutTeach.svg?branch=master)
+by default any registrant is a member !
 
-### Issues or Suggestions?
+in console : "rails db" to open db access terminal
 
-Please add them to the [issues page](https://github.com/alpha-tango/OutTeach/issues), where you can also see a list of planned enhancements.
+execute the following :
 
-### Screenshots
+update users set role = 'admin'/'instructor' where email='<needed>';
 
-...are coming soon!
+this will change the permissions
+
+# base adapted from
+
+https://github.com/alpha-tango/OutTeach
+
