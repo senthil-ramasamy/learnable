@@ -19,7 +19,8 @@ password-for-all : priyanka
 
 ### Setup
 
-* clone down the app: `git clone https://github.com/alpha-tango/OutTeach.git`
+* install ruby on rails
+* clone down the app: `git clone https://github.com/senthil-ramasamy/learnable.git`
 * set up the database: `rake db:setup`
 * you're all set!
 
