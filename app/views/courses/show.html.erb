@@ -1,0 +1,91 @@
+<div class='course-info row'>
+  <div class='large-3 columns'>
+    <h3><%= @course.title.upcase %></h3>
+  </div>
+  <div class='large-9 columns'>
+    <%= @course.description %><br>
+    <span class='subject'><%= @course.subject.upcase %></span><br>
+    <% if @course.user == current_user || current_user.admin? %>
+      <%= link_to "Delete course", course_path(@course),
+          method: :delete,
+          data: { confirm: 'Are you sure you want to delete this course and all its assignments?' } %><br>
+      <%= link_to "Update course info", edit_course_path(@course) %>
+    <% else %>
+      <p>
+        created by: <%= link_to @course.user.name, user_path(@course.user) %><br>
+        last updated at: <%= @course.updated_at.strftime("%b %d, %Y") %>
+      </p>
+    <% end %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='large-3 columns'>
+    <h3>ASSIGN-<br>MENTS</h3>
+  </div>
+  <div class='large-9 columns'>
+    <% if @course.assignments.any? %>
+      <% @course.assignments.each do |assignment| %>
+        <h4>
+          <%= link_to assignment.title, assignment_path(assignment) %>
+        </h4>
+      <% end %>
+    <% end %>
+    <% if @course.user == current_user %>
+      <h4><%= link_to "+ add a new assignment", course_path(@course), id: 'add_new_assignment' %></h4>
+    <% end %>
+  </div>
+</div>
+
+<div class='new-assignment row', style="display:none">
+  <div class='large-3 columns'>
+    <h3>ADD A<br>NEW<br>ASSIGN-<br>MENT</h3>
+  </div>
+  <div class='large-9 columns'>
+    <%= render partial: 'courses/new_assignment',
+        locals: { course: @course, assignment: @assignment } %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='large-3 columns'>
+    <h3>QUIZZES</h3>
+  </div>
+  <div class='large-9 columns'>
+    <% if @course.quizzes.any? %>
+      <% @course.quizzes.each do |quiz| %>
+        <h4>
+          <%= link_to quiz.title, quiz_path(quiz) %>
+        </h4>
+      <% end %>
+    <% end %>
+    <% if @course.user == current_user %>
+      <h4><%= link_to "+ add a new quiz", course_path(@course), id: 'add_new_quiz' %></h4>
+    <% end %>
+  </div>
+</div>
+
+<div class='new-quiz row', style="display:none">
+  <div class='large-3 columns'>
+    <h3>ADD A<br>NEW QUIZ</h3>
+  </div>
+  <div class='large-9 columns'>
+    <%= render partial: 'courses/new_quiz',
+        locals: { course: @course, quiz: @quiz } %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='large-3 columns'>
+    <h3>STUDENTS</h3>
+  </div>
+  <div class='large-9 columns'>
+    <% if @course.enrollments.any? %>
+      <% @course.enrollments.each do |enrollment| %>
+        <h4>
+          <%= link_to enrollment.user.name, user_path(enrollment.user) %>
+        </h4>
+      <% end %>
+    <% end %>
+  </div>
+</div>

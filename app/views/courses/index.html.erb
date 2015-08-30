@@ -1,0 +1,25 @@
+<div class='row'>
+  <div class='large-3 columns'>
+    <h3>FULL<br>LIST<br>OF<br>COURSES</h3>
+  </div>
+
+  <div class='large-9 columns'>
+    <% @courses.each do |course| %>
+      <h4>
+        <%= link_to course.title, course_path(course), class: 'course-title' %>
+      </h4>
+      <span class: 'author'>by </span>
+      <%= link_to course.user.name, user_path(course.user), class: 'username' %>
+      <p>
+        <%= course.description %>
+      </p>
+    <% end %>
+    <% if current_user.member? %>
+        Hey u must become an instructor to add courses !
+        Contact the site admin and apply for course instructor profile with ur resume <h3>admin@learnable.in</h3>
+    <% else %>
+        Hey instructor ! you can also add new course !
+        <%= link_to "ADD NEW COURSE", new_course_path, class: 'button' %>
+    <% end %>
+  </div>
+</div>
