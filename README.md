@@ -6,6 +6,17 @@
 
 Built in Rails/PostGreSQL.
 
+### Heroku Instance 
+
+http://learnableooad.herokuapp.com/
+
+admin-user : admin@learnable.in	
+instructor-user : instructor@learnable.in
+member-user: member@learnable.in
+
+password-for-all : priyanka
+
+
 ### Setup
 
 * clone down the app: `git clone https://github.com/alpha-tango/OutTeach.git`
